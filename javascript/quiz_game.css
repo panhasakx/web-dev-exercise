@@ -1,0 +1,211 @@
+/* .header{
+     color: rgb(216, 182, 9);
+    border: solid red;
+} */
+/* ======================================
+   RESET
+====================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* ======================================
+   BACKGROUND — CITY NIGHT + RED GLOW
+====================================== */
+body {
+    background: radial-gradient(circle at top, #1b1d29, #0e0f19, #08080e);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* Subtle red flashing like Spidey sense */
+@keyframes spiderSense {
+    0%, 100% { box-shadow: 0 0 0 rgba(255,0,0,0); }
+    50% { box-shadow: 0 0 40px rgba(255, 30, 50, 0.2); }
+}
+body {
+    animation: spiderSense 6s infinite;
+}
+
+/* ======================================
+   HEADER — Spider-Man Comic Style
+====================================== */
+.header h1 {
+    font-size: 45px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: #ff2b2b;
+    text-transform: uppercase;
+
+    text-shadow:
+        0 0 10px rgba(255, 60, 60, 0.9),
+        0 0 25px rgba(255, 30, 30, 0.6);
+
+    animation: spideyPulse 3s infinite;
+}
+
+@keyframes spideyPulse {
+    0%, 100% {
+        text-shadow:
+            0 0 10px #ff4747,
+            0 0 20px #ff1e1e;
+    }
+    50% {
+        text-shadow:
+            0 0 20px #ff7070,
+            0 0 40px #ff2b2b;
+    }
+}
+
+/* ======================================
+   QUESTION BOX — Web Frame
+====================================== */
+.question {
+    background: rgba(14, 17, 32, 0.85);
+    padding: 25px;
+    border-radius: 18px;
+    width: 90%;
+    max-width: 650px;
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #ffeded;
+
+    border: 3px solid #ff1e1e;
+
+    box-shadow:
+        0 0 20px rgba(255, 50, 50, 0.4),
+        inset 0 0 20px rgba(255, 0, 0, 0.3);
+
+    position: relative;
+    overflow: hidden;
+}
+
+/* Web pattern overlay */
+.question::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('https://i.imgur.com/qZcVzkW.png'); /* transparent web pattern */
+    opacity: 0.1;
+    mix-blend-mode: screen;
+}
+
+/* ======================================
+   ANSWER CHOICES
+====================================== */
+.choices {
+    width: 90%;
+    max-width: 650px;
+}
+
+/* Buttons = Spider-Man suit style */
+.choices button {
+    width: 100%;
+    padding: 15px;
+    margin: 12px 0;
+    cursor: pointer;
+
+    font-size: 18px;
+    font-weight: 700;
+
+    border: none;
+    border-radius: 12px;
+    position: relative;
+
+    background: linear-gradient(145deg, #c50d0d, #0d1633);
+    color: #dbe8ff;
+
+    border: 2px solid #0a1228;
+    transition: 0.3s;
+}
+
+/* CSS Spider Logo on Hover */
+.choices button::before {
+    content: "🕷️";
+    position: absolute;
+    left: -45px;
+    font-size: 26px;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+/* Hover Effect */
+.choices button:hover {
+    background: linear-gradient(145deg, #071a4d, #021032);
+    color: white;
+    border-color: #ff1e1e;
+    transform: scale(1.06);
+
+    box-shadow:
+        0 0 15px rgba(255, 20, 20, 0.6),
+        inset 0 0 10px rgba(255, 20, 20, 0.4);
+}
+
+.choices button:hover::before {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+/* ======================================
+   NEXT BUTTON — Spider-Man Red Tech
+====================================== */
+#nextBtn {
+    margin-top: 25px;
+    padding: 12px 40px;
+    font-size: 20px;
+    font-weight: 900;
+
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+    background: linear-gradient(90deg, #ff1f1f, #d60000);
+    color: white;
+
+    transition: 0.3s;
+
+    box-shadow:
+        0 0 20px rgba(255, 40, 40, 0.6),
+        0 5px 15px rgba(0,0,0,0.4);
+}
+
+/* Hover */
+#nextBtn:hover {
+    transform: scale(1.1);
+    background: linear-gradient(90deg, #ff3b3b, #ff0000);
+
+    box-shadow:
+        0 0 40px rgba(255, 60, 60, 0.8),
+        0 0 80px rgba(255, 30, 30, 0.6);
+}
+
+/* ======================================
+   MOBILE RESPONSIVE
+====================================== */
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 32px;
+    }
+    .question {
+        font-size: 18px;
+        padding: 18px;
+    }
+    .choices button {
+        font-size: 16px;
+    }
+    #nextBtn {
+        font-size: 16px;
+        padding: 10px 30px;
+    }
+}
+.hidden { display: none;}
